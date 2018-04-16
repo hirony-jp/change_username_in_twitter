@@ -21,7 +21,8 @@ def lambda_handler(event, context):
     weather_url = weather_url.format(city = city_name, key = weather_key)
     twitter_url = "https://api.twitter.com/1.1/account/update_profile.json"
     now = dt.datetime.now()
-    jst = now + dt.timedelta(hours=9) 
+    jst = now + dt.timedelta(hours=9)
+    jst = jst.hour
 
     # 天気データを取得
     weather_req = requests.get(weather_url)
