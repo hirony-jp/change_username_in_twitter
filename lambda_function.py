@@ -21,6 +21,7 @@ def lambda_handler(event, context):
     weather_url = weather_url.format(city = city_name, key = weather_key)
     twitter_url = "https://api.twitter.com/1.1/account/update_profile.json"
     now = dt.datetime.now()
+    # AWS Lambda は UST なので JST に変換してやる必要がある。
     jst = now + dt.timedelta(hours=9)
     jst = jst.hour
 
