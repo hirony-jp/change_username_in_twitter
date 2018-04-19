@@ -1,4 +1,4 @@
-# change username in twitter.
+# change username of twitter.
 
 add weather in username.  
 
