@@ -61,6 +61,7 @@ def lambda_handler(event, context):
     # update Twitter username.
     twitter_req = twitter.post(twitter_url, params = params)
 
+    # respons check.
     if twitter_req.status_code == 200:
         return "ok 200."
     else:
