@@ -17,19 +17,20 @@ def lambda_handler(event, context):
 
     # config.
     city_name = "Matsue"
-    weather_url = "http://api.openweathermap.org/data/2.5/weather?q={city}&APPID={key}"
+    weather_url = "http://api.openweathermap.org/data/2.5/weather?q={city}&APPID={key}&units=metric"
     weather_url = weather_url.format(city = city_name, key = weather_key)
     twitter_url = "https://api.twitter.com/1.1/account/update_profile.json"
     # AWS Lambda は UST なので JST に変えてやる必要がある
     now = dt.datetime.now()
     jst = now + dt.timedelta(hours=9)
     jst = jst.hour
-    username = "ひろにぃ"
+    username = "ひろにぃ@気温{temp}℃"
 
     # 天気データを取得
     weather_req = requests.get(weather_url)
     weather_data = json.loads(weather_req.text)
     weather_id = weather_data["weather"][0]["id"]
+    username = username.format(temp = weather_data["main"]["temp"])
 
     # weather id をもとに分類
     if weather_id == 800:
