@@ -66,4 +66,4 @@ def lambda_handler(event, context):
     if twitter_req.status_code == 200:
         return "ok 200."
     else:
-        return "ERROR: " + str(twitter_req.status_code)
+        return "ERROR : " + str(twitter_req.status_code)

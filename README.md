@@ -1,9 +1,9 @@
-# change username of twitter.
+# change username of twitter
 
-add weather in username.  
+add weather in username
 
-add your api keys.  
+add your api keys
 
-uncode.  
+uncode
 
-MIT licence.
+MIT licence
