@@ -24,37 +24,38 @@ def lambda_handler(event, context):
     now = dt.datetime.now()
     jst = now + dt.timedelta(hours=9)
     jst = jst.hour
-    username = "ひろにぃ@気温{temp}℃"
+    #username = "ひろにぃ@気温{temp}℃"
+    username = "Hirony"
 
     # 天気データを取得
     weather_req = requests.get(weather_url)
     weather_data = json.loads(weather_req.text)
     weather_id = weather_data["weather"][0]["id"]
-    username = username.format(temp = weather_data["main"]["temp"])
+    #username = username.format(temp = weather_data["main"]["temp"])
 
     # weather id をもとに分類
     if weather_id == 800:
         if jst >= 18 and jst <= 23 or jst >= 0 and jst <= 5:
-            username = username + "🌕快晴"
+            username = username + "🌕"
         else:
-            username = username + "☀快晴"
+            username = username + "☀"
     elif weather_id >= 801:
         if jst >= 18 and jst <= 23 or jst >= 0 and jst <= 5:
-            username = username + "🌕☁晴れ"
+            username = username + "🌕☁"
         else:
-            username = username + "☀☁晴れ"
+            username = username + "☀☁"
     elif weather_id >= 802 and weather_id <= 804:
-        username = username + "☁くもり"
+        username = username + "☁"
     elif weather_id >= 300 and weather_id <= 321:
-        username = username + "🌂霧雨"
+        username = username + "🌂"
     elif weather_id >= 500 and weather_id <= 531:
-        username = username + "☔あめ"
+        username = username + "☔"
     elif weather_id >= 200 and weather_id <= 232:
-        username = username + "⚡☔雷雨"
+        username = username + "⚡☔"
     elif weather_id >= 600 and weather_id <= 622:
-        username = username + "⛄ゆき"
+        username = username + "⛄"
     elif weather_id >= 900:
-        username = username + "🌀やっべぇ"
+        username = username + "🌀"
 
     # set username parameter.
     params = { "name" : username }
